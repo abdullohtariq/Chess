@@ -17,7 +17,7 @@ class GameState:
 
 
 class move:
-    rowsToRanks = {
+    ranksToRows = {
         "1": 7,
         "2": 6,
         "3": 5,
@@ -26,6 +26,22 @@ class move:
         "6": 2,
         "7": 1,
         "8": 0,
+    }
+    rowsToRanks = {
+        v: k for k, v in ranksToRows.items()  # Cool Way of reversing a hashmap
+    }
+    filesToCol ={
+        "h": 7,
+        "g": 6,
+        "f": 5,
+        "e": 4,
+        "d": 3,
+        "c": 2,
+        "b": 1,
+        "a": 0,
+    }
+    colToFiles = {
+        v: k for k, v in ranksToRows.items()  # Cool Way of reversing a hashmap
     }
 
     def __init__(self, startsq, endsq, board):
