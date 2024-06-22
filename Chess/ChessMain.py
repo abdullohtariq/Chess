@@ -18,7 +18,8 @@ def load_images():
         except FileNotFoundError:
             print(f"Error loading image: {image_path}")
 
-    # Consider adding default placeholder image for missing pieces
+    # Consider adding default placeholder image for missing pi
+
 
 def main():
     pg.init()
@@ -65,9 +66,5 @@ def draw_pieces(screen, board):
                 image = IMAGES.get(piece)
                 if image:  # Check if image is loaded
                     screen.blit(image, (col * SQ_SIZE, row * SQ_SIZE))
-
-
-
-
 if __name__ == "__main__":
     main()
