@@ -14,8 +14,20 @@ class GameState:
             ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],]
         self.whiteToMove = True
         self.move = []
-class move():
-    
+
+
+class move:
+    rowsToRanks = {
+        "1": 7,
+        "2": 6,
+        "3": 5,
+        "4": 4,
+        "5": 3,
+        "6": 2,
+        "7": 1,
+        "8": 0,
+    }
+
     def __init__(self, startsq, endsq, board):
         self.startRow = startsq[0]
         self.startCol = startsq[1]
