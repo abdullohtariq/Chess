@@ -51,3 +51,10 @@ class move:
         self.endCol = endsq[1]
         self.pieceMoved = board[self.startRow][self.startCol]
         self.pieceCaptured = board[self.endRow][self.endCol]
+
+    def getChessNotation(self):
+        return self.getRankFile(self.startRow, self.startCol) + self.getRankFile(self.endRow, self.endCol)
+    def getRankFile(self, r, c):
+        return self.colToFiles[c] + self.ranksToRows[r]
+
+
