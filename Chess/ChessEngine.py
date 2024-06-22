@@ -1,5 +1,5 @@
 # It will check Valid Moves And storing all the information about the current state of the game.
-# And it also have a move log.
+# And it also has a move log.
 
 class GameState:
     def __init__(self):
@@ -15,9 +15,9 @@ class GameState:
         self.whiteToMove = True
         self.move = []
     def makeMove(self, move):
-        self.board[move.startRow][move.startRow] = "--"
+        self.board[move.startRow][move.startCol] = "--"
         self.board[move.endRow][move.endCol] = move.pieceMoved
-        self.move.append(move)
+        self.move.append(self.board)  # change it to move maybe later
         self.whiteToMove = not self.whiteToMove
 class move:
     ranksToRows = {
@@ -33,7 +33,7 @@ class move:
     rowsToRanks = {
         v: k for k, v in ranksToRows.items()  # Cool Way of reversing a hashmap
     }
-    filesToCol ={
+    filesToCol = {
         "h": 7,
         "g": 6,
         "f": 5,
@@ -44,7 +44,7 @@ class move:
         "a": 0,
     }
     colToFiles = {
-        v: k for k, v in ranksToRows.items()  # Cool Way of reversing a hashmap
+        v: k for k, v in filesToCol.items()  # Cool Way of reversing a hashmap
     }
 
     def __init__(self, startsq, endsq, board):
@@ -57,7 +57,6 @@ class move:
 
     def getChessNotation(self):
         return self.getRankFile(self.startRow, self.startCol) + self.getRankFile(self.endRow, self.endCol)
+
     def getRankFile(self, r, c):
-        return self.colToFiles[c] + self.ranksToRows[r]
-
-
+        return self.colToFiles[c] + self.rowsToRanks[r]

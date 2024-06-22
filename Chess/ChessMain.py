@@ -1,7 +1,7 @@
 import pygame as pg  # Use lower case 'pg' for convention
 from Chess import ChessEngine
 
-WIDTH = HEIGHT = 512
+WIDTH = HEIGHT = 400
 DIMENSION = 8
 SQ_SIZE = HEIGHT // DIMENSION  # Use floor division for integer size
 MAX_FPS = 15
@@ -39,10 +39,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
+            # Handle other game events (e.g., mouse clicks for piece movement)
             elif event.type == pg.MOUSEBUTTONDOWN:
                 location = pg.mouse.get_pos()
-                col = location[0] // SQ_SIZE
                 row = location[1] // SQ_SIZE
+                col = location[0] // SQ_SIZE
                 if sqSelected == (row, col):  # it means that user wants to de select
                     sqSelected = ()  # Resetting the sqSelected
                     playerClicks = []  # Resetting the playerClicks
@@ -50,15 +51,11 @@ def main():
                     sqSelected = (row, col)
                     playerClicks.append(sqSelected)
                 if len(playerClicks) == 2:
-                    move = ChessEngine.move(playerClicks[0], playerClicks[1],gs.board)
-                    print(move.getChessNotation())
+                    move = ChessEngine.move(playerClicks[0], playerClicks[1], gs.board)
                     gs.makeMove(move)
                     sqSelected = ()
                     playerClicks = []
 
-
-
-        # Handle other game events (e.g., mouse clicks for piece movement)
 
         clock.tick(MAX_FPS)
         draw_game_state(screen, gs)
