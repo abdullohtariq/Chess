@@ -33,10 +33,26 @@ def main():
 
     load_images()
     running = True
+    sqSelected = ()  # no square is selected, it is a tuple means it store row and col (x,y)
+    playerClicks = []  # keeps track of players click these are two tuples [(x,y),(x,y)]
     while running:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                location = pg.mouse.get_pos()
+                col = location[0] // SQ_SIZE
+                row = location[1] // SQ_SIZE
+                if sqSelected == (row, col):  # it means that user wants to de select
+                    sqSelected = ()  # Resetting the sqSelected
+                    playerClicks = []  # Resetting the playerClicks
+                else:
+                    sqSelected = (row, col)
+                    playerClicks.append(sqSelected)
+                if len(playerClicks) == 2:
+
+
+
 
         # Handle other game events (e.g., mouse clicks for piece movement)
 
