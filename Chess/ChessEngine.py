@@ -1,8 +1,8 @@
-#It will check Valid Moves And storing all the information about the current state of the game. And it also have a move log.
+# It will check Valid Moves And storing all the information about the current state of the game.
+# And it also have a move log.
 
 class GameState:
     def __init__(self):
-        #the
         self.board = [
             ["bR", "bN", "bB", "bQ", "bK", "bB", "bN", "bR"],
             ["bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp"],
@@ -14,3 +14,12 @@ class GameState:
             ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],]
         self.whiteToMove = True
         self.move = []
+class move():
+    
+    def __init__(self, startsq, endsq, board):
+        self.startRow = startsq[0]
+        self.startCol = startsq[1]
+        self.endRow = endsq[0]
+        self.endCol = endsq[1]
+        self.pieceMoved = board[self.startRow][self.startCol]
+        self.pieceCaptured = board[self.endRow][self.endCol]
