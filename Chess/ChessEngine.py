@@ -14,8 +14,11 @@ class GameState:
             ["wR", "wN", "wB", "wQ", "wK", "wB", "wN", "wR"],]
         self.whiteToMove = True
         self.move = []
-
-
+    def makeMove(self, move):
+        self.board[move.startRow][move.startRow] = "--"
+        self.board[move.endRow][move.endCol] = move.pieceMoved
+        self.move.append(move)
+        self.whiteToMove = not self.whiteToMove
 class move:
     ranksToRows = {
         "1": 7,
