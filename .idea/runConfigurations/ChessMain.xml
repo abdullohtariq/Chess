@@ -8,12 +8,11 @@
       <env name="PYTHONUNBUFFERED" value="1" />
     </envs>
     <option name="SDK_HOME" value="" />
-    <option name="SDK_NAME" value="Python 3.11 (Chess)" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Chess" />
-    <option name="IS_MODULE_SDK" value="false" />
+    <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
-    <option name="SCRIPT_NAME" value="C:\Users\B.s\PycharmProjects\Chess\Chess\ChessMain.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../../../B.s/PycharmProjects/Chess/Chess/ChessMain.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
