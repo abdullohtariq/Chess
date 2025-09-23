@@ -1,5 +1,6 @@
+import os
 import pygame as pg  # Use lower case 'pg' for convention
-from Chess import ChessEngine
+import ChessEngine
 
 WIDTH = HEIGHT = 400
 DIMENSION = 8
@@ -9,14 +10,19 @@ IMAGES = {}
 
 
 def load_images():
-    pieces = ["wp", "bp", "bR", "bN", "bB", "bQ", "bK", "wB", "wN", "wR", "wQ", "wK", "bB", "bN", "bR"]
+    # unique list of piece image names used by the engine
+    pieces = ["wp", "bp", "bR", "bN", "bB", "bQ", "bK", "wR", "wN", "wB", "wQ", "wK"]
+    # Build absolute path to the Images directory relative to this file
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    images_dir = os.path.join(script_dir, "Images")
     for piece in pieces:
-        image_path = f"Images/{piece}.png"  # Use f-string for clean path construction
+        image_path = os.path.join(images_dir, f"{piece}.png")
         try:
             image = pg.image.load(image_path)
             IMAGES[piece] = pg.transform.scale(image, (SQ_SIZE, SQ_SIZE))
-        except FileNotFoundError:
-            print(f"Error loading image: {image_path}")
+        except Exception as e:
+            # Print full path and the exception to make debugging easier
+            print(f"Error loading image: {image_path} -> {e}")
 
     # Consider adding default placeholder image for missing pi
 
@@ -79,7 +85,8 @@ def draw_pieces(screen, board):
     for row in range(DIMENSION):
         for col in range(DIMENSION):
             piece = board[row][col]
-            if piece != "-":  # Check if square is empty
+            # engine represents empty squares as "--"
+            if piece != "--":
                 image = IMAGES.get(piece)
                 if image:  # Check if image is loaded
                     screen.blit(image, (col * SQ_SIZE, row * SQ_SIZE))
